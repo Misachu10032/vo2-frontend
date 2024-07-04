@@ -7,6 +7,7 @@ import { socket } from './service/socket';
 import MinerList from './components/DashBoard/Miner/MinerList';
 import Header from './components/DashBoard/shared/Header';
 import AsteroidList from './components/DashBoard/Asteroid/AsteroidList';
+import PlanetList from './components/DashBoard/Planet/PlanetList';
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
   const [currentTick, setCurrentTick] = useState(0);
   const [miners, setMiners] = useState([]);
   const [asteroids, setAsteroids] = useState([]);
+  const [planets, setPlanets] = useState([]);
 
   useEffect(() => {
     const eventHandler = (data) => {
@@ -21,8 +23,9 @@ function App() {
       setCurrentTick(data.currentTick);
       setMiners(data.miners)
       setAsteroids(data.asteroids)
-      console.log(data);
-      console.log(currentTick)
+      setPlanets(data.planets)
+
+  
     };
 
     socket.on('tick', eventHandler);
@@ -39,6 +42,7 @@ function App() {
       <div>{currentTick}</div>
       {selectedTab === 'miner' && <MinerList miners={miners} />}
       {selectedTab === 'asteroids' && <AsteroidList asteroids={asteroids} />}
+      {selectedTab === 'planet' && <PlanetList planets={planets} miners={miners}  asteroids={asteroids}/>}
 
     </div>
   );

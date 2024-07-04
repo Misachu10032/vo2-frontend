@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { getMinorHistoryStatusText } from '../../../../utils/getStatusText';
-import {getOneMinerHistory} from '../../../../service/api/asteroid-api'
+import { getMinorHistoryStatusText } from '../../../../utils/get-status-text.helper';
+import {getOneMinerHistory} from '../../../../service/api'
 
 import Modal from '../../shared/Modal';
 

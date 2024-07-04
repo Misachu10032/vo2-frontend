@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { getMinorStatusText } from '../../../../utils/getStatusText';
+import { getMinorStatusText } from '../../../../utils/get-status-text.helper';
 import MinerHistoryModal from '../MinerHistoryModal';
 
 const MinerList = ({ miners }) => {
