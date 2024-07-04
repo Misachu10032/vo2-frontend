@@ -1,17 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import "./App.css";
 
-
-import logo from './assets/logo.svg';
-import { socket } from './service/socket';
-import MinerList from './components/DashBoard/Miner/MinerList';
-import Header from './components/DashBoard/shared/Header';
-import AsteroidList from './components/DashBoard/Asteroid/AsteroidList';
-import PlanetList from './components/DashBoard/Planet/PlanetList';
-
+import { socket } from "./service/socket";
+import Dashboard from "./components/Dashboard";
+import LiveMap from "./components/LiveMap";
 
 function App() {
-  const [selectedTab, setSelectedTab] = useState('miner');
+  const [selectedTab, setSelectedTab] = useState("miner");
   const [currentTick, setCurrentTick] = useState(0);
   const [miners, setMiners] = useState([]);
   const [asteroids, setAsteroids] = useState([]);
@@ -19,30 +14,33 @@ function App() {
 
   useEffect(() => {
     const eventHandler = (data) => {
-
       setCurrentTick(data.currentTick);
-      setMiners(data.miners)
-      setAsteroids(data.asteroids)
-      setPlanets(data.planets)
-
-  
+      setMiners(data.miners);
+      setAsteroids(data.asteroids);
+      setPlanets(data.planets);
     };
 
-    socket.on('tick', eventHandler);
+    socket.on("tick", eventHandler);
 
     return () => {
-      socket.off('tick', eventHandler);
+      socket.off("tick", eventHandler);
     };
   }, []);
 
   return (
-    <div className="App">
-      <img src={logo} alt="Logo" />|
-      <Header selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
-      <div>{currentTick}</div>
-      {selectedTab === 'miner' && <MinerList miners={miners} />}
-      {selectedTab === 'asteroids' && <AsteroidList asteroids={asteroids} />}
-      {selectedTab === 'planet' && <PlanetList planets={planets} miners={miners}  asteroids={asteroids}/>}
+    <div className="App" style={{ position: "relative", display: "flex" }}>
+      {/* Dashboard on the left */}
+
+        <Dashboard
+          selectedTab={selectedTab}
+          setSelectedTab={setSelectedTab}
+          currentTick={currentTick}
+          miners={miners}
+          asteroids={asteroids}
+          planets={planets}
+        />
+
+        <LiveMap />
 
     </div>
   );
