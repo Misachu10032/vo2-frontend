@@ -1,8 +1,8 @@
 # VO2-take-home
 
 # Demo
-Here is a video demo of the project. In case I overlooked the potential issue that may caused by screen resolution, broswers or system enviorment.
-[Demo](https://github.com/Misachu10032/vo2-frontend/assets/demo)
+There is a video demo of the project in src/assets. It is in case that I overlooked the potential issue that may caused by screen resolution, broswers or system enviorment.
+
 
 # To Run
 1. clone and navigate to the folder
