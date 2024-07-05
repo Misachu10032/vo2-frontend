@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import planet1 from "../../../assets/icons/planets/planet1.svg";
 import planet2 from "../../../assets/icons/planets/planet2.svg";
 import planet3 from "../../../assets/icons/planets/planet3.svg";
@@ -8,6 +8,7 @@ import minerIcon from "../../../assets/icons/minerIcon.svg";
 
 const Objects = ({ planets, asteroids, miners }) => {
   const planetIcons = [planet1, planet2, planet3];
+
 
   return (
     <div className={styles["objects"]}>
@@ -50,21 +51,29 @@ const Objects = ({ planets, asteroids, miners }) => {
         })}
       </div>
 
-      {/* miners */}
+      {/* miners with animation */}
       <div className={styles["miner-objects"]}>
         {miners.map((miner) => {
+
           const position = {
             left: `${(miner.x / 1000) * 100}%`,
             top: `${(miner.y / 1000) * 100}%`,
-            transform: `rotate(${miner.angle}deg)`, 
           };
+          const currentAngle = miner.angle+90;
+
           return (
             <img
               key={miner._id}
               src={minerIcon}
               alt={miner.name}
               className={styles["miner-icon"]}
-              style={{ ...position, zIndex: 2 }}
+              style={{
+                ...position,
+                zIndex: 2,
+                position: "absolute",
+                transition: "left 1s, top 1s, transform 1s",
+                transform: `rotate(${currentAngle}deg)`,
+              }}
             />
           );
         })}
