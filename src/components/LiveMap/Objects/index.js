@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import planet1 from "../../../assets/icons/planets/planet1.svg";
 import planet2 from "../../../assets/icons/planets/planet2.svg";
 import planet3 from "../../../assets/icons/planets/planet3.svg";
 import styles from "./Objects.module.css";
 import asteroidIcon from "../../../assets/icons/asteroidIcon.svg";
 import minerIcon from "../../../assets/icons/minerIcon.svg";
+import { spaceToScreenLocation } from "../../../utils/space-to-screen-location.helper";
 
 const Objects = ({ planets, asteroids, miners }) => {
   const planetIcons = [planet1, planet2, planet3];
@@ -16,8 +17,9 @@ const Objects = ({ planets, asteroids, miners }) => {
         {planets.map((planet, index) => {
           const icon = planetIcons[index % planetIcons.length];
           const position = {
-            left: `${(planet.position.x / 1000) * 100}%`,
-            top: `${(planet.position.y / 1000) * 100}%`,
+          
+            left: `${spaceToScreenLocation(planet.position.x)}%`,
+            top: `${spaceToScreenLocation(planet.position.y)}%`,
           };
           return (
             <img
@@ -35,8 +37,8 @@ const Objects = ({ planets, asteroids, miners }) => {
       <div className={styles["asteroid-objects"]}>
         {asteroids.map((asteroid) => {
           const position = {
-            left: `${(asteroid.position.x / 1000) * 100}%`,
-            top: `${(asteroid.position.y / 1000) * 100}%`,
+            left: `${spaceToScreenLocation(asteroid.position.x)}%`,
+            top: `${spaceToScreenLocation(asteroid.position.y)}%`,
           };
           return (
             <img
@@ -54,8 +56,8 @@ const Objects = ({ planets, asteroids, miners }) => {
       <div className={styles["miner-objects"]}>
         {miners.map((miner) => {
           const position = {
-            left: `${(miner.x / 1000) * 100}%`,
-            top: `${(miner.y / 1000) * 100}%`,
+            left: `${spaceToScreenLocation(miner.x)}%`,
+            top: `${spaceToScreenLocation(miner.y)}%`,
           };
           const currentAngle = miner.angle + 90;
 
