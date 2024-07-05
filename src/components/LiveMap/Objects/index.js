@@ -9,7 +9,6 @@ import minerIcon from "../../../assets/icons/minerIcon.svg";
 const Objects = ({ planets, asteroids, miners }) => {
   const planetIcons = [planet1, planet2, planet3];
 
-
   return (
     <div className={styles["objects"]}>
       {/*  planets */}
@@ -54,12 +53,11 @@ const Objects = ({ planets, asteroids, miners }) => {
       {/* miners with animation */}
       <div className={styles["miner-objects"]}>
         {miners.map((miner) => {
-
           const position = {
             left: `${(miner.x / 1000) * 100}%`,
             top: `${(miner.y / 1000) * 100}%`,
           };
-          const currentAngle = miner.angle+90;
+          const currentAngle = miner.angle + 90;
 
           return (
             <img
