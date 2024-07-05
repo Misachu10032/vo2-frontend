@@ -8,6 +8,7 @@ import minerIcon from '../../../assets/icons/minerIcon.svg';
 import { spaceToScreenLocation } from '../../../utils/space-to-screen-location.helper';
 
 const Objects = ({ planets, asteroids, miners }) => {
+  //load three icons to this array
   const planetIcons = [planet1, planet2, planet3];
 
   return (
@@ -15,19 +16,36 @@ const Objects = ({ planets, asteroids, miners }) => {
       {/*  planets */}
       <div className={styles['planet-objects']}>
         {planets.map((planet, index) => {
+          //cycle the icons in the array if there are more than 3 planets
           const icon = planetIcons[index % planetIcons.length];
           const position = {
             left: `${spaceToScreenLocation(planet.position.x)}%`,
             top: `${spaceToScreenLocation(planet.position.y)}%`,
           };
+          const mineralsTextposition = {
+            left: `${spaceToScreenLocation(planet.position.x)}%`,
+            top: `${spaceToScreenLocation(planet.position.y)+10}%`,
+          };
           return (
-            <img
+      
+            <>
+                  <img
               key={planet._id}
               src={icon}
               alt={planet.name}
               className={styles['planet-icon']}
               style={position}
             />
+            <div className={styles['mineral-count']} style={mineralsTextposition}>
+                {planet.minerals >= 1000 ? (
+                  <span className={styles['green-text']}>
+                    {planet.minerals}/1000
+                  </span>
+                ) : (
+                  `${planet.minerals}/1000`
+                )}
+              </div>
+            </>
           );
         })}
       </div>
@@ -47,6 +65,7 @@ const Objects = ({ planets, asteroids, miners }) => {
               className={styles['asteroid-icon']}
               style={{ ...position, zIndex: 1 }}
             />
+            
           );
         })}
       </div>

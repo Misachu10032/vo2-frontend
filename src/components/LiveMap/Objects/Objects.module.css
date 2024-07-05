@@ -24,3 +24,12 @@
   height: 50px; 
   transform: translate(-50%, -50%); 
 }
+.mineral-count {
+  position: absolute;
+  transform: translateX(-50%);
+  font-size: 24px;
+  color:white; 
+}
+.green-text {
+  color: green; 
+}
