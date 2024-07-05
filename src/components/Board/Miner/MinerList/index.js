@@ -26,13 +26,13 @@ const MinerList = ({ miners }) => {
               Planet
             </th>
             <th className={`${styles.mediumColumn} ${styles.whiteText}`}>
-              Carry Capacity
+              carryCapacity
             </th>
             <th className={`${styles.smallColumn} ${styles.whiteText}`}>
-              Travel Speed
+              travelSpeed
             </th>
             <th className={`${styles.smallColumn} ${styles.whiteText}`}>
-              Mining Speed
+              miningSpeed
             </th>
             <th className={`${styles.mediumColumn} ${styles.whiteText}`}>
               Position
