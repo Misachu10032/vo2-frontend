@@ -16,3 +16,8 @@ There is a video demo of the project in src/assets. It is in case that I overloo
 3. used formik and yup for forms and validation
 4. installed prettier for formatting. `npm run format` 
 
+
+# Code Structure
+Since this is small project, I did not consider to have a global css. I took the module.css approach and you may see some repeated css.
+Since this is a one page project, I do not have a page folder. You can find almost everything in components folder.
+You can find api connections in service folder, Helper tools in the utils folder, figma image in assets folder.
