@@ -34,8 +34,14 @@ const MinerList = ({ miners }) => {
         <tbody>
           {miners.map((miner, index) => (
             <React.Fragment key={miner._id}>
-              <tr onClick={() => handleOpenMinerHistoryModal(miner)}>
-                <td className={`${styles.nameColumn} ${styles.whiteTextWithUnderLine}`}>{miner.name}</td>
+              <tr >
+              <td
+                  className={`${styles.nameColumn} ${styles.whiteTextWithUnderLine}`}
+                  onClick={() => handleOpenMinerHistoryModal(miner)}
+                  style={{ cursor: "pointer" }} 
+                >
+                  {miner.name}
+                </td>
                 <td className={`${styles.planetColumn} ${styles.lightGreyText}`}>{miner.planet.name}</td>
                 <td className={`${styles.carryCapacityColumn} ${styles.lightGreyText}`}>
                   {miner.carryCapacity === 200 ? (
