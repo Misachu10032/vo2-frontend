@@ -19,5 +19,5 @@ There is a video demo of the project in src/assets. It is in case that I overloo
 
 # Code Structure
 1.  Since this is small project, I did not consider to have a global css. I took the module.css approach and you may see some repeated css.
-2.  Since this is a one page project, I do not have a page folder. You can find almost everything in components folder.
+2.  Since this is an one page project, I do not have a page folder. You can find almost everything in components folder.
 3.  You can find api connections in service folder, Helper tools in the utils folder, figma image in assets folder.
