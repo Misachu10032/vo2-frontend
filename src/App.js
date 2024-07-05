@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 
-import { socket } from './service/socket';
-import Dashboard from './components/Dashboard';
+import Dashboard from './components/Board';
 import LiveMap from './components/LiveMap';
+import { socket } from './service/socket';
 
 function App() {
   const [selectedTab, setSelectedTab] = useState('miner');
