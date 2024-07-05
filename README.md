@@ -2,7 +2,7 @@
 
 # Demo
 Here is a video demo of the project. In case I overlooked the potential issue that may caused by screen resolution, broswers or system enviorment.
-
+[Demo](https://github.com/Misachu10032/vo2-frontend/assets/demo)
 
 # To Run
 1. clone and navigate to the folder
