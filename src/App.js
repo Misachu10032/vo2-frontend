@@ -28,8 +28,8 @@ function App() {
   }, []);
 
   return (
-    <div className="App" style={{ position: "relative", display: "flex" }}>
-      {/* Dashboard on the left */}
+    <div className="App" >
+
 
         <Dashboard
           selectedTab={selectedTab}
@@ -40,7 +40,13 @@ function App() {
           planets={planets}
         />
 
-        <LiveMap />
+        <LiveMap 
+          
+              currentTick={currentTick}
+              planets={planets}
+              asteroids={asteroids}
+              miners={miners}
+        />
 
     </div>
   );
