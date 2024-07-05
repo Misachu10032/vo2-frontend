@@ -1,7 +1,7 @@
 # VO2-take-home
 
 # Demo
-There is a video demo of the project in src/assets. It is in case that I overlooked the potential issue that may caused by screen resolution, broswers or system enviorment.
+There is a video demo of the project in src/assets. It is in case that I overlooked the potential issue that may caused by screen resolution, broswers, system enviorment etc. 
 
 
 # To Run
