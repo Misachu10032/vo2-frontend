@@ -57,7 +57,7 @@ const MinerList = ({ miners }) => {
                 </td>
                 <td className={`${styles.lightGreyText}`}>{getMinorStatusText(miner.status)}</td>
               </tr>
-              {index < miners.length - 1 && (
+              {index < miners.length && (
                 <tr className={styles.dividingLine}>
                   <td colSpan="7"></td>
                 </tr>

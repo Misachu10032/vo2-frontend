@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { getMinorHistoryStatusText } from '../../../../utils/get-status-text.helper';
-import {getOneMinerHistory} from '../../../../service/api'
-
 import Modal from '../../shared/Modal';
+import { getMinorHistoryStatusText } from '../../../../utils/get-status-text.helper';
+import { getOneMinerHistory } from '../../../../service/api';
+import styles from './MinerHistoryModal.module.css';
+import { formatDate } from '../../../../utils/format-date.helper';
+import loadingIcon from '../../../../assets/icons/loadingIcon.svg'
+import closeButton from '../../../../assets/buttons/closeButton.svg'
 
 const MinerHistoryModal = ({ miner, onClose }) => {
   const [history, setHistory] = useState([]);
@@ -18,9 +21,9 @@ const MinerHistoryModal = ({ miner, onClose }) => {
   const getHistory = async (page) => {
     try {
       setIsLoading(true);
-      const data = await getOneMinerHistory(miner._id, page); 
-      setHistory((prevHistory) => [...prevHistory, ...data]); 
-      setTotalPages(data.totalPages); 
+      const data = await getOneMinerHistory(miner._id, page);
+      setHistory((prevHistory) => [...prevHistory, ...data]);
+      setTotalPages(data.totalPages);
       setIsLoading(false);
     } catch (error) {
       console.error('Error fetching history:', error);
@@ -41,42 +44,62 @@ const MinerHistoryModal = ({ miner, onClose }) => {
 
   return (
     <Modal isOpen={isOpen} onClose={closeModal}>
-      <div style={{ maxHeight: '70vh', overflowY: 'auto' }}>
-        <span className="close" onClick={closeModal}>&times;</span>
-        <h2 className="white-text">History of {miner.name}</h2>
-        <table className="white-text" border="1" cellPadding="5" cellSpacing="0">
-          <thead>
-            <tr>
-              <th className="white-text">Date</th>
-              <th className="white-text">Year</th>
-              <th className="white-text">Planet</th>
-              <th className="white-text">Carry Capacity</th>
-              <th className="white-text">Travel Speed</th>
-              <th className="white-text">Mining Speed</th>
-              <th className="white-text">Position</th>
-              <th className="white-text">Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            {history.map((item) => (
-              <tr key={item._id}>
-                <td className="white-text">{item.createdAt}</td>
-                <td className="white-text">{item.year}</td>
-                <td className="white-text">{item.planet}</td>
-                <td className="white-text">{item.capacity.current}/{item.capacity.max}</td>
-                <td className="white-text">{item.speed.travel}</td>
-                <td className="white-text">{item.speed.mining}</td>
-                <td className="white-text">{Math.round(item.position.x)}.{Math.round(item.position.y)}</td>
-                <td className="white-text">{getMinorHistoryStatusText(item.status)}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        {isLoading && <p>Loading...</p>}
-        {currentPage < totalPages && (
-          <button onClick={loadNextPage} disabled={isLoading}>
-            Load More
+      <div className={styles.modalContent}>
+      <button className={styles.closeButton} onClick={onClose}>
+            <img src={closeButton} alt="Close" />
           </button>
+        <h2 className={`${styles.title} ${styles.whiteText}`}>History of {miner.name}</h2>
+        {isLoading ? (
+           <img  className={styles.loadingIcon}  src={loadingIcon} alt="loadingIcon" />
+        ) : (
+          <React.Fragment>
+            <table className={styles.table} cellPadding="5" cellSpacing="0">
+              <thead>
+                <tr>
+                  <th className={`${styles.whiteText}`}>Date</th>
+                  <th className={`${styles.whiteText}`}>Year</th>
+                  <th className={`${styles.whiteText}`}>Planet</th>
+                  <th className={`${styles.whiteText}`}>Carry Capacity</th>
+                  <th className={`${styles.whiteText}`}>Travel Speed</th>
+                  <th className={`${styles.whiteText}`}>Mining Speed</th>
+                  <th className={`${styles.whiteText}`}>Position</th>
+                  <th className={`${styles.whiteText}`}>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {history.map((item, index) => (
+                  <React.Fragment key={item._id}>
+                    <tr>
+                      <td className={`${styles.lightGreyText}`}>{formatDate(item.createdAt)}</td>
+                      <td className={`${styles.lightGreyText}`}>{item.year}</td>
+                      <td className={`${styles.lightGreyText}`}>{item.planet}</td>
+                      <td className={`${styles.lightGreyText}`}>
+                        {item.capacity.current >= item.capacity.max ? (
+                          <span className={styles.greenText}>{item.capacity.current}/{item.capacity.max}</span>
+                        ) : (
+                          `${item.capacity.current}/${item.capacity.max}`
+                        )}
+                      </td>
+                      <td className={`${styles.lightGreyText}`}>{item.speed.travel}</td>
+                      <td className={`${styles.lightGreyText}`}>{item.speed.mining}</td>
+                      <td className={`${styles.lightGreyText}`}>{Math.round(item.position.x)}.{Math.round(item.position.y)}</td>
+                      <td className={`${styles.lightGreyText}`}>{getMinorHistoryStatusText(item.status)}</td>
+                    </tr>
+                    {index < history.length - 1 && (
+                      <tr className={styles.dividingLine}>
+                        <td colSpan="8"></td>
+                      </tr>
+                    )}
+                  </React.Fragment>
+                ))}
+              </tbody>
+            </table>
+            {currentPage < totalPages && (
+              <button className={styles.loadMoreButton} onClick={loadNextPage} disabled={isLoading}>
+                Load More
+              </button>
+            )}
+          </React.Fragment>
         )}
       </div>
     </Modal>
