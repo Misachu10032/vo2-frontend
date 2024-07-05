@@ -25,6 +25,7 @@ const Dashboard = ({
       {selectedTab === 'miner' && <MinerList miners={miners} />}
       {selectedTab === 'asteroids' && <AsteroidList asteroids={asteroids} />}
       {selectedTab === 'planet' && (
+        //passing down all data, because mineCreation requires all data for validation
         <PlanetList planets={planets} miners={miners} asteroids={asteroids} />
       )}
     </div>

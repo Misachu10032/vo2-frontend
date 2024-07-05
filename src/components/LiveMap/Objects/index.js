@@ -70,6 +70,7 @@ const Objects = ({ planets, asteroids, miners }) => {
                 ...position,
                 zIndex: 2,
                 position: 'absolute',
+                //transition enables the animation
                 transition: 'left 1s, top 1s, transform 1s',
                 transform: `rotate(${currentAngle}deg)`,
               }}

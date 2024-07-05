@@ -16,7 +16,7 @@
   background: #232334; /* Dark theme */
   border-radius: 12px; /* Rounded corners */
   padding: 30px;
-  width: 350px; /* Width similar to example */
+  width: 350px; 
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
   position: relative;
   text-align: center;

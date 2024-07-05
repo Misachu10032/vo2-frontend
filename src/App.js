@@ -12,6 +12,8 @@ function App() {
   const [asteroids, setAsteroids] = useState([]);
   const [planets, setPlanets] = useState([]);
 
+  // websocket connection
+  // receiving data every 1s
   useEffect(() => {
     const eventHandler = (data) => {
       setCurrentTick(data.currentTick);

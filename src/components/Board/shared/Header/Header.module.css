@@ -2,14 +2,13 @@
 
 .tabRow {
     display: flex;
-    justify-content: left; /* Center the icons horizontally */
-    align-items: center; /* Center the icons vertically */
-    gap: 10px; /* Add space between the icons */
+    justify-content: left; 
+    gap: 10px; 
   }
   
   .tab {
-    width: 100px; /* Set the width of the icons */
-    height: 100px; /* Set the height of the icons */
-    object-fit: contain; /* Ensure the icons maintain their aspect ratio */
+    width: 100px; 
+    height: 100px; 
+    object-fit: contain;
   }
   
