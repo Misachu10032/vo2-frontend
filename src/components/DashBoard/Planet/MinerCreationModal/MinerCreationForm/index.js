@@ -1,15 +1,21 @@
-import React from "react";
-import { useFormik } from "formik";
-import styles from "./MinerCreationForm.module.css";
-import { minerCreationSchema } from "./validationSchemas";
-import { createMiner } from "../../../../../service/api";
-import { buildMinerData } from "../../../../../utils/build-miner-data.helper";
-import saveButton from '../../../../../assets/buttons/saveButton.svg'
+import React from 'react';
+import { useFormik } from 'formik';
+import styles from './MinerCreationForm.module.css';
+import { minerCreationSchema } from './validationSchemas';
+import { createMiner } from '../../../../../service/api';
+import { buildMinerData } from '../../../../../utils/build-miner-data.helper';
+import saveButton from '../../../../../assets/buttons/saveButton.svg';
 
-const MinerCreationForm = ({ defaultSelection, planets, miners, asteroids, onClose }) => {
+const MinerCreationForm = ({
+  defaultSelection,
+  planets,
+  miners,
+  asteroids,
+  onClose,
+}) => {
   const formik = useFormik({
     initialValues: {
-      name: "",
+      name: '',
       selectedPlanetName: defaultSelection.name,
       carryCapacity: 0,
       travelSpeed: 0,
@@ -18,15 +24,18 @@ const MinerCreationForm = ({ defaultSelection, planets, miners, asteroids, onClo
     },
     validationSchema: minerCreationSchema,
     onSubmit: async (values) => {
-      const pointsRemaining = 200 - (values.carryCapacity + values.travelSpeed + values.miningSpeed);
-      const selectedPlanet = planets.find((planet) => planet.name === values.selectedPlanetName);
+      const pointsRemaining =
+        200 - (values.carryCapacity + values.travelSpeed + values.miningSpeed);
+      const selectedPlanet = planets.find(
+        (planet) => planet.name === values.selectedPlanetName
+      );
       if (pointsRemaining < 0) {
-        alert("Points remaining must be greater than or equal to 0.");
+        alert('Points remaining must be greater than or equal to 0.');
         return;
       }
 
       if (selectedPlanet.minerals < 1000) {
-        alert("This planet does not have enough minerals");
+        alert('This planet does not have enough minerals');
         return;
       }
 
@@ -36,12 +45,16 @@ const MinerCreationForm = ({ defaultSelection, planets, miners, asteroids, onClo
         await createMiner(minerData);
         onClose();
       } catch (error) {
-        alert("Miner creation failed");
+        alert('Miner creation failed');
       }
     },
   });
 
-  const pointsRemaining = 200 - (formik.values.carryCapacity + formik.values.travelSpeed + formik.values.miningSpeed);
+  const pointsRemaining =
+    200 -
+    (formik.values.carryCapacity +
+      formik.values.travelSpeed +
+      formik.values.miningSpeed);
 
   return (
     <form onSubmit={formik.handleSubmit} noValidate className={styles.form}>
@@ -49,8 +62,8 @@ const MinerCreationForm = ({ defaultSelection, planets, miners, asteroids, onClo
         <label className={`${styles.label} ${styles.leftAligned}`}>
           Name
           <input
-            type="text"
-            name="name"
+            type='text'
+            name='name'
             value={formik.values.name}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
@@ -66,7 +79,7 @@ const MinerCreationForm = ({ defaultSelection, planets, miners, asteroids, onClo
         <label className={`${styles.label} ${styles.leftAligned}`}>
           Planet
           <select
-            name="selectedPlanetName"
+            name='selectedPlanetName'
             value={formik.values.selectedPlanetName}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
@@ -81,22 +94,20 @@ const MinerCreationForm = ({ defaultSelection, planets, miners, asteroids, onClo
         </label>
       </div>
 
-      <div className={styles.bigText}>
-        Points Assigned
-      </div>
+      <div className={styles.bigText}>Points Assigned</div>
 
       <div className={styles.inlineFields}>
         <div className={styles.fieldWrapper}>
           <label className={`${styles.label} ${styles.leftAligned}`}>
             Carry Capacity
             <input
-              type="number"
-              name="carryCapacity"
+              type='number'
+              name='carryCapacity'
               value={formik.values.carryCapacity}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               required
-              min="1"
+              min='1'
               className={styles.inLineInputWidth}
             />
             {formik.touched.carryCapacity && formik.errors.carryCapacity ? (
@@ -108,13 +119,13 @@ const MinerCreationForm = ({ defaultSelection, planets, miners, asteroids, onClo
           <label className={`${styles.label} ${styles.leftAligned}`}>
             Travel Speed
             <input
-              type="number"
-              name="travelSpeed"
+              type='number'
+              name='travelSpeed'
               value={formik.values.travelSpeed}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               required
-              min="1"
+              min='1'
               className={styles.inLineInputWidth}
             />
             {formik.touched.travelSpeed && formik.errors.travelSpeed ? (
@@ -126,13 +137,13 @@ const MinerCreationForm = ({ defaultSelection, planets, miners, asteroids, onClo
           <label className={`${styles.label} ${styles.leftAligned}`}>
             Mining Speed
             <input
-              type="number"
-              name="miningSpeed"
+              type='number'
+              name='miningSpeed'
               value={formik.values.miningSpeed}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               required
-              min="1"
+              min='1'
               className={styles.inLineInputWidth}
             />
             {formik.touched.miningSpeed && formik.errors.miningSpeed ? (
@@ -141,12 +152,14 @@ const MinerCreationForm = ({ defaultSelection, planets, miners, asteroids, onClo
           </label>
         </div>
       </div>
-      <div className={`${styles.totalPoints} ${pointsRemaining >= 0 ? styles.positive : styles.negative}`}>
+      <div
+        className={`${styles.totalPoints} ${pointsRemaining >= 0 ? styles.positive : styles.negative}`}
+      >
         Total: {pointsRemaining}/200
       </div>
 
-      <button type="submit">
-      <img src={saveButton} alt="saveButton" />
+      <button type='submit'>
+        <img src={saveButton} alt='saveButton' />
       </button>
     </form>
   );

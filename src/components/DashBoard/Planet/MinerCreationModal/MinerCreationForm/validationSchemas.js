@@ -7,7 +7,8 @@ export const minerCreationSchema = yup.object({
     .test(
       'unique-name',
       'A miner with this name already exists',
-      (value, context) => !context.parent.miners.some((miner) => miner.name === value)
+      (value, context) =>
+        !context.parent.miners.some((miner) => miner.name === value)
     ),
   carryCapacity: yup
     .number()
@@ -21,5 +22,4 @@ export const minerCreationSchema = yup.object({
     .number()
     .required('Mining Speed is required')
     .min(1, 'Mining Speed must be greater than 0'),
-
 });

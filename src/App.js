@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
-import "./App.css";
+import React, { useEffect, useState } from 'react';
+import './App.css';
 
-import { socket } from "./service/socket";
-import Dashboard from "./components/Dashboard";
-import LiveMap from "./components/LiveMap";
+import { socket } from './service/socket';
+import Dashboard from './components/Dashboard';
+import LiveMap from './components/LiveMap';
 
 function App() {
-  const [selectedTab, setSelectedTab] = useState("miner");
+  const [selectedTab, setSelectedTab] = useState('miner');
   const [currentTick, setCurrentTick] = useState(0);
   const [miners, setMiners] = useState([]);
   const [asteroids, setAsteroids] = useState([]);
@@ -20,34 +20,30 @@ function App() {
       setPlanets(data.planets);
     };
 
-    socket.on("tick", eventHandler);
+    socket.on('tick', eventHandler);
 
     return () => {
-      socket.off("tick", eventHandler);
+      socket.off('tick', eventHandler);
     };
   }, []);
 
   return (
-    <div className="App" >
+    <div className='App'>
+      <Dashboard
+        selectedTab={selectedTab}
+        setSelectedTab={setSelectedTab}
+        currentTick={currentTick}
+        miners={miners}
+        asteroids={asteroids}
+        planets={planets}
+      />
 
-
-        <Dashboard
-          selectedTab={selectedTab}
-          setSelectedTab={setSelectedTab}
-          currentTick={currentTick}
-          miners={miners}
-          asteroids={asteroids}
-          planets={planets}
-        />
-
-        <LiveMap 
-          
-              currentTick={currentTick}
-              planets={planets}
-              asteroids={asteroids}
-              miners={miners}
-        />
-
+      <LiveMap
+        currentTick={currentTick}
+        planets={planets}
+        asteroids={asteroids}
+        miners={miners}
+      />
     </div>
   );
 }
