@@ -6,7 +6,7 @@ There is a video demo of the project in src/assets. It is in case that I overloo
 
 # To Run
 1. clone and navigate to the folder
-2. npm install(Assuming you have npm install.Please install npm in you don't)
+2. npm install(Assuming you have npm install.Please install npm if you don't)
 3. npm run start
 4. the project is hosted on http://localhost:3000/
 
