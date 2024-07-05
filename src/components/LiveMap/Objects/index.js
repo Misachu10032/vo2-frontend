@@ -24,7 +24,7 @@ const Objects = ({ planets, asteroids, miners }) => {
           };
           const mineralsTextposition = {
             left: `${spaceToScreenLocation(planet.position.x)}%`,
-            top: `${spaceToScreenLocation(planet.position.y)+10}%`,
+            top: `${spaceToScreenLocation(planet.position.y)+6}%`,
           };
           return (
       
