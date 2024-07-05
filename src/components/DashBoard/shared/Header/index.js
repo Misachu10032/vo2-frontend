@@ -11,17 +11,17 @@ import styles from './Header.module.css';
 
 function Header({ selectedTab, setSelectedTab }) { 
   return (
-    <div className={styles.iconsRow}>
+    <div className={styles.tabRow}>
       {selectedTab === 'miner' ? (
         <img
-          className={styles.icon}
+          className={styles.tab}
           src={minerTabActive}
           alt="miner-tab-active"
           onClick={() => setSelectedTab('miner')}
         />
       ) : (
         <img
-          className={styles.icon}
+          className={styles.tab}
           src={minerTabInactive}
           alt="miner-tab-inactive"
           onClick={() => setSelectedTab('miner')}
@@ -30,14 +30,14 @@ function Header({ selectedTab, setSelectedTab }) {
 
       {selectedTab === 'asteroids' ? (
         <img
-          className={styles.icon}
+          className={styles.tab}
           src={asteroidsTabActive}
           alt="asteroids-tab-active"
           onClick={() => setSelectedTab('asteroids')}
         />
       ) : (
         <img
-          className={styles.icon}
+          className={styles.tab}
           src={asteroidsTabInactive}
           alt="asteroids-tab-inactive"
           onClick={() => setSelectedTab('asteroids')}
@@ -46,14 +46,14 @@ function Header({ selectedTab, setSelectedTab }) {
 
       {selectedTab === 'planet' ? (
         <img
-          className={styles.icon}
+          className={styles.tab}
           src={planetTabActive}
           alt="planet-tab-active"
           onClick={() => setSelectedTab('planet')}
         />
       ) : (
         <img
-          className={styles.icon}
+          className={styles.tab}
           src={planetTabInactive}
           alt="planet-tab-inactive"
           onClick={() => setSelectedTab('planet')}

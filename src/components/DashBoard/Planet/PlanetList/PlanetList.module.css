@@ -1,0 +1,25 @@
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .table th,
+  .table td {
+    padding: 7px;
+    text-align: left;
+    font-size: 14px;
+  }
+  
+  .dividingLine {
+    border-bottom: 0.5px solid #9499C3;
+  }
+  .lightGreyText {
+    color: #9499c3; 
+  }
+  .whiteText {
+    color: #ffffff; 
+  }
+  .greenText {
+    color: green; 
+  }

@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import plusIcon from "../../../../assets/icons/plusIcon.svg";
 import MinerCreationModal from "../MinerCreationModal";
+import styles from "./PlanetList.module.css"; 
 
 const PlanetList = ({ planets, miners, asteroids }) => {
   const [selectedPlanet, setSelectedPlanet] = useState(null);
+
   const handleOpenMinerCreationModal = (planet) => {
     setSelectedPlanet(planet);
   };
@@ -11,31 +13,47 @@ const PlanetList = ({ planets, miners, asteroids }) => {
   const handleCloseModal = () => {
     setSelectedPlanet(null);
   };
+
   return (
     <td>
-      <h2 className="white-text">Planet List</h2>
-      <table className="white-text" border="1" cellPadding="5" cellSpacing="0">
+     
+      <table className={styles.table}  cellPadding="5" cellSpacing="0">
         <thead>
           <tr>
-            <td className="white-text">Name</td>
-            <td className="white-text">Miners</td>
-            <td className="white-text">Minerals</td>
-            <td className="white-text"></td>
+            <td className={styles.whiteText}>Name</td>
+            <td className={styles.whiteText}>Miners</td>
+            <td className={styles.whiteText}>Minerals</td>
+            <td className={styles.whiteText}></td>
+          </tr>
+          <tr className={styles.dividingLine}>
+            <td colSpan="4"></td>
           </tr>
         </thead>
         <tbody>
           {planets.map((planet) => (
             <React.Fragment key={planet._id}>
               <tr>
-                <td className="white-text">{planet.name}</td>
-                <td className="white-text">{planet.miners}</td>
-                <td className="white-text">{planet.minerals}</td>
-                <td className="white-text">
-                
-                  {planet.minerals>=0 &&  <div onClick={() => handleOpenMinerCreationModal(planet)}>
-                    <img src={plusIcon} alt="plus-icon" />
-                  </div>}
+                <td className={styles.lightGreyText}>{planet.name}</td>
+                <td className={styles.lightGreyText}>{planet.miners}</td>
+
+                <td className={styles.lightGreyText}>
+                  {planet.minerals >= 1000 ? (
+                    <span className={styles.greenText}>{  planet.minerals}/1000</span>
+                  ) : (
+                    `${planet.minerals}/1000`
+                  )}
                 </td>
+
+                <td>
+                  {planet.minerals >= 1000 && (
+                    <div onClick={() => handleOpenMinerCreationModal(planet)}>
+                      <img src={plusIcon} alt="plus-icon" />
+                    </div>
+                  )}
+                </td>
+              </tr>
+              <tr className={styles.dividingLine}>
+                <td colSpan="4"></td>
               </tr>
             </React.Fragment>
           ))}

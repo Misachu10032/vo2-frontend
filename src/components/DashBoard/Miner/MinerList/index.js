@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import { getMinorStatusText } from '../../../../utils/get-status-text.helper';
-import MinerHistoryModal from '../MinerHistoryModal';
+import React, { useState } from "react";
+import { getMinorStatusText } from "../../../../utils/get-status-text.helper";
+import MinerHistoryModal from "../MinerHistoryModal";
+import styles from "./MinerList.module.css";
 
 const MinerList = ({ miners }) => {
   const [selectedMiner, setSelectedMiner] = useState(null);
@@ -15,30 +16,47 @@ const MinerList = ({ miners }) => {
 
   return (
     <div>
-      <h2 className="white-text">Miner List</h2>
-      <table className="white-text" border="1" cellPadding="5" cellSpacing="0">
+      <table className={styles.table} cellPadding="5" cellSpacing="0">
         <thead>
           <tr>
-            <th className="white-text">Name</th>
-            <th className="white-text">Planet</th>
-            <th className="white-text">Carry Capacity</th>
-            <th className="white-text">Travel Speed</th>
-            <th className="white-text">Mining Speed</th>
-            <th className="white-text">Position</th>
-            <th className="white-text">Status</th>
+            <th className={`${styles.smallColumn} ${styles.whiteText}`}>Name</th>
+            <th className={`${styles.smallColumn} ${styles.whiteText}`}>Planet</th>
+            <th className={`${styles.mediumColumn} ${styles.whiteText}`}>Carry Capacity</th>
+            <th className={`${styles.smallColumn} ${styles.whiteText}`}>Travel Speed</th>
+            <th className={`${styles.smallColumn} ${styles.whiteText}`}>Mining Speed</th>
+            <th className={`${styles.mediumColumn} ${styles.whiteText}`}>Position</th>
+            <th className={`${styles.largeColumn} ${styles.whiteText}`}>Status</th>
+          </tr>
+          <tr className={styles.dividingLine}>
+            <td colSpan="7"></td>
           </tr>
         </thead>
         <tbody>
-          {miners.map((miner) => (
-            <tr key={miner._id} onClick={() => handleOpenMinerHistoryModal(miner)}>
-              <td className="white-text">{miner.name}</td>
-              <td className="white-text">{miner.planet.name}</td>
-              <td className="white-text">{miner.carryCapacity}/200</td>
-              <td className="white-text">{miner.travelSpeed}</td>
-              <td className="white-text">{miner.miningSpeed}</td>
-              <td className="white-text">{Math.round(miner.x)}.{Math.round(miner.y)}</td>
-              <td className="white-text">{getMinorStatusText(miner.status)}</td>
-            </tr>
+          {miners.map((miner, index) => (
+            <React.Fragment key={miner._id}>
+              <tr onClick={() => handleOpenMinerHistoryModal(miner)}>
+                <td className={`${styles.nameColumn} ${styles.whiteTextWithUnderLine}`}>{miner.name}</td>
+                <td className={`${styles.planetColumn} ${styles.lightGreyText}`}>{miner.planet.name}</td>
+                <td className={`${styles.carryCapacityColumn} ${styles.lightGreyText}`}>
+                  {miner.carryCapacity === 200 ? (
+                    <span className={styles.greenText}>{miner.carryCapacity}/200</span>
+                  ) : (
+                    `${miner.carryCapacity}/200`
+                  )}
+                </td>
+                <td className={`${styles.lightGreyText}`}>{miner.travelSpeed}</td>
+                <td className={`${styles.lightGreyText}`}>{miner.miningSpeed}</td>
+                <td className={`${styles.lightGreyText}`}>
+                  {Math.round(miner.x)}.{Math.round(miner.y)}
+                </td>
+                <td className={`${styles.lightGreyText}`}>{getMinorStatusText(miner.status)}</td>
+              </tr>
+              {index < miners.length - 1 && (
+                <tr className={styles.dividingLine}>
+                  <td colSpan="7"></td>
+                </tr>
+              )}
+            </React.Fragment>
           ))}
         </tbody>
       </table>

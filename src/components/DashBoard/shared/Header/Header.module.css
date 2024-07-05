@@ -1,15 +1,15 @@
-/* IconsRow.module.css */
 
-.iconsRow {
+
+.tabRow {
     display: flex;
-    justify-content: center; /* Center the icons horizontally */
+    justify-content: left; /* Center the icons horizontally */
     align-items: center; /* Center the icons vertically */
     gap: 10px; /* Add space between the icons */
   }
   
-  .icon {
-    width: 50px; /* Set the width of the icons */
-    height: 50px; /* Set the height of the icons */
+  .tab {
+    width: 100px; /* Set the width of the icons */
+    height: 100px; /* Set the height of the icons */
     object-fit: contain; /* Ensure the icons maintain their aspect ratio */
   }
   

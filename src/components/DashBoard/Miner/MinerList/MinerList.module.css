@@ -1,0 +1,49 @@
+
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .table th,
+  .table td {
+    padding: 7px;
+    text-align: left;
+    font-size: 14px;
+  }
+  
+
+  
+
+  
+  .dividingLine {
+    border-bottom: 0.5px solid #9499c3; 
+  }
+  
+  .smallColumn {
+    width: 10%;
+  }
+  
+  .mediumColumn {
+    width: 15%;
+  }
+  
+  .largeColumn {
+    width: 30%;
+  }
+  
+  .greenText {
+    color: green; 
+  }
+  
+  .whiteTextWithUnderLine {
+    color: #ffffff; 
+    text-decoration: underline;
+  }
+  .lightGreyText{
+    color: #9499c3;
+  }
+  .whiteText {
+    color: #ffffff; 
+  }
+  
