@@ -34,7 +34,6 @@ function App() {
       <Dashboard
         selectedTab={selectedTab}
         setSelectedTab={setSelectedTab}
-        currentTick={currentTick}
         miners={miners}
         asteroids={asteroids}
         planets={planets}

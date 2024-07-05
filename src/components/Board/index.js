@@ -10,7 +10,6 @@ import Header from './shared/Header';
 const Dashboard = ({
   selectedTab,
   setSelectedTab,
-  currentTick,
   miners,
   asteroids,
   planets,
@@ -21,7 +20,6 @@ const Dashboard = ({
 
       <Header selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
       <img className={styles.line} src={dividingLine1} alt='dividingLine1' />
-      <div>{currentTick}</div>
       {selectedTab === 'miner' && <MinerList miners={miners} />}
       {selectedTab === 'asteroids' && <AsteroidList asteroids={asteroids} />}
       {selectedTab === 'planet' && (
