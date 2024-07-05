@@ -1,0 +1,105 @@
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+}
+
+.label {
+  width: 100%;
+  color: #9499c3;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+
+.leftAligned {
+  text-align: left; 
+}
+
+.fieldWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column; 
+  margin-bottom: 15px;
+}
+
+.inlineFields {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+
+input,
+select {
+  background: #343445; 
+  color: #ffffff;
+  border: none;
+  border-radius: 8px; 
+  padding: 10px;
+  width: 100%; 
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border: 1px solid #5a5a66; 
+}
+
+input[type="number"] {
+  -moz-appearance: textfield; 
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+button[type="submit"] {
+  border: none;
+  border-radius: 10px; 
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-top: 20px;
+
+}
+
+
+.error {
+  color: #ff4d4d; 
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.totalPoints {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.positive {
+  color: #00ff00; 
+}
+
+.negative {
+  color: #ff0000; 
+}
+
+.fullWidth {
+  width: 95%; 
+}
+
+.nameWidth {
+  width: 90%; 
+}
+
+.inLineInputWidth {
+  width: 50%;
+}
+.bigText{
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

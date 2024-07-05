@@ -1,7 +1,6 @@
-export const buildMinerData = (values, planets, asteroids) => {
+export const buildMinerData = (values, selectedPlanet, asteroids) => {
 
-    const selectedPlanet = planets.find((planet) => planet.name === values.selectedPlanetName);
-
+    
 
   
  

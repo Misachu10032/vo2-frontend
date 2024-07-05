@@ -1,66 +1,48 @@
 
+
 .backdrop {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.5); /* Slightly dark background */
   display: flex;
-  align-items: center;
   justify-content: center;
-  z-index: 1000;
+  align-items: center;
 }
 
 .modal {
-  background: #202030;
-  padding: 20px;
-  border-radius: 8px;
-  width: 400px;
+  background: #232334; /* Dark theme */
+  border-radius: 12px; /* Rounded corners */
+  padding: 30px;
+  width: 350px; /* Width similar to example */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
   position: relative;
+  text-align: center;
+  color: #ffffff; /* White text */
 }
 
 h2 {
-  margin-top: 0;
-  color: white;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-}
-
-label {
-  margin-bottom: 10px;
-  color: white;
-}
-
-input, select {
-  margin-top: 5px;
-  padding: 8px;
-  border-radius: 4px;
-  border: 1px solid #444;
-  background: #2a2a2a;
-  color: white;
-}
-
-button[type="submit"] {
-  background: #4a90e2;
-  color: white;
-  border: none;
-  padding: 10px;
-  margin-top: 10px;
-  cursor: pointer;
-  border-radius: 4px;
+  margin: 0 0 20px 0; /* Space below heading */
 }
 
 .closeButton {
   background: none;
   border: none;
-  color: white;
-  font-size: 18px;
+  color: #ffffff;
+  font-size: 24px;
   position: absolute;
   top: 10px;
   right: 10px;
   cursor: pointer;
+}
+
+.closeButton img {
+  width: 24px;
+  height: 24px;
+}
+
+.modalTitle {
+  text-align: center;
 }
