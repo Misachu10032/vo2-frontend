@@ -9,33 +9,20 @@ import closeButton from '../../../../assets/buttons/closeButton.svg';
 
 const MinerHistoryModal = ({ miner, onClose }) => {
   const [history, setHistory] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
+
   const [isLoading, setIsLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(true);
 
   useEffect(() => {
-    getHistory(currentPage);
-  }, [currentPage]);
-
-  const getHistory = async (page) => {
-    try {
+    const getHistory = async () => {
       setIsLoading(true);
-      const data = await getOneMinerHistory(miner._id, page);
-      setHistory((prevHistory) => [...prevHistory, ...data]);
-      setTotalPages(data.totalPages);
+      const data = await getOneMinerHistory(miner._id);
+      setHistory(data);
       setIsLoading(false);
-    } catch (error) {
-      console.error('Error fetching history:', error);
-      setIsLoading(false);
-    }
-  };
+    };
 
-  const loadNextPage = () => {
-    if (currentPage < totalPages && !isLoading) {
-      setCurrentPage(currentPage + 1);
-    }
-  };
+    getHistory().catch(console.error);
+  }, []);
 
   const closeModal = () => {
     setIsOpen(false);
@@ -115,15 +102,6 @@ const MinerHistoryModal = ({ miner, onClose }) => {
                 ))}
               </tbody>
             </table>
-            {currentPage < totalPages && (
-              <button
-                className={styles.loadMoreButton}
-                onClick={loadNextPage}
-                disabled={isLoading}
-              >
-                Load More
-              </button>
-            )}
           </React.Fragment>
         )}
       </div>

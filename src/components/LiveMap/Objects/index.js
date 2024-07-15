@@ -24,19 +24,21 @@ const Objects = ({ planets, asteroids, miners }) => {
           };
           const mineralsTextposition = {
             left: `${spaceToScreenLocation(planet.position.x)}%`,
-            top: `${spaceToScreenLocation(planet.position.y)+6}%`,
+            top: `${spaceToScreenLocation(planet.position.y) + 6}%`,
           };
           return (
-      
             <>
-                  <img
-              key={planet._id}
-              src={icon}
-              alt={planet.name}
-              className={styles['planet-icon']}
-              style={position}
-            />
-            <div className={styles['mineral-count']} style={mineralsTextposition}>
+              <img
+                key={planet._id}
+                src={icon}
+                alt={planet.name}
+                className={styles['planet-icon']}
+                style={position}
+              />
+              <div
+                className={styles['mineral-count']}
+                style={mineralsTextposition}
+              >
                 {planet.minerals >= 1000 ? (
                   <span className={styles['green-text']}>
                     {planet.minerals}/1000
@@ -65,7 +67,6 @@ const Objects = ({ planets, asteroids, miners }) => {
               className={styles['asteroid-icon']}
               style={{ ...position, zIndex: 1 }}
             />
-            
           );
         })}
       </div>
