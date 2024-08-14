@@ -1,4 +1,9 @@
 # VO2-take-home
+# 做TAKE-HOME的时候请斟酌
+我上交了这个take-home后被HR告知这个take-home做的不错，之后就被鸽了，没有任何回馈。
+面试感受：这家公司面试的CTO法国人感觉说话还挺正常。但是中国人HR说话方式蛮恶心的，喜欢中英混搭。感觉想用些洋文来混淆是非。我问她们为啥告诉我take-home结果很好但不能推进的时候整了一大堆洋文。。。因为我英语水平很棒，都听得懂，当时没有发现她在干嘛，现在想想蛮恶心的。
+如果你也遇到相同的情况，希望你不要焦虑，把这个take-home当个小游戏做做玩玩。放平心态。
+
 
 # Demo
 There is a video demo of the project in src/assets. It is in case that I overlooked the potential issue that may caused by screen resolution, broswers, system enviorment etc. 
